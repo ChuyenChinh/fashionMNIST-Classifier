@@ -41,14 +41,6 @@ def predict_1_sample(model, img ,device):
     
     return confidence.item() * 100 , CLASSES[index.item()]
 
-def plot(img):
-    img = img.squeeze(0).cpu()
-    img = img / 2 + 0.5
-    npimg = img.numpy()
-    npimg = np.transpose(npimg,(1,2,0))
-    plt.imshow(npimg)
-    plt.show()
-        
 def run_demo_prediction():
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     _ , testloader = get_dataloaders(DATA_DIR,1)
@@ -60,7 +52,6 @@ def run_demo_prediction():
     img , label = next(sample)
     conf , pred = predict_1_sample(model,img,device)
     
-    plot(img)
     print(f"Ground Truth: {CLASSES[label.item()]}")
     print(f"Prediction: {pred}")
     print(f"Confidence {conf:.2f}%")
@@ -84,7 +75,7 @@ def evaluate():
             total += test_label.shape[0]
             correct += (pred == test_label).sum().item()
     
-    print(f" Accuracy: {correct / total * 100}")
+    print(f"Accuracy on test set: {correct / total * 100}")
 
 if __name__  == "__main__":
     run_demo_prediction()
