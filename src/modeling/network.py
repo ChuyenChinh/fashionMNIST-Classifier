@@ -1,7 +1,7 @@
 import torch 
 import torch.nn as nn
 
-class fashionMLP:
+class fashionMLP(nn.Module):
     def __init__(self):
         super().__init__()
         self.flat = nn.Flatten()
@@ -11,6 +11,7 @@ class fashionMLP:
         self.l4 = nn.ReLU()
         self.l5 = nn.Linear(64,10)
     def forward(self,x):
+        x = self.flat(x)
         x = self.l1(x)
         x = self.l2(x)
         x = self.l3(x)
