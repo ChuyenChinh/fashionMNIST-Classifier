@@ -84,7 +84,7 @@ def evaluate():
             total += test_label.shape[0]
             correct += (pred == test_label).sum().item()
     
-    return f" Accuracy on 1000 sample: {correct / total * 100}"
+    print(f" Accuracy on 1000 sample: {correct / total * 100}")
 
 if __name__  == "__main__":
     run_demo_prediction()
