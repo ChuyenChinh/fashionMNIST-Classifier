@@ -70,7 +70,7 @@ def evaluate():
     total = 0
     
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    _ , testloader = get_dataloaders(DATA_DIR,1)
+    _ , testloader = get_dataloaders(DATA_DIR,1000)
     model_dir = os.path.join(MODEL_DIR,'fashion_mlp.pth')
     model = load_trained_model(model_dir,device)
     with torch.no_grad():
@@ -84,7 +84,7 @@ def evaluate():
             total += test_label.shape[0]
             correct += (pred == test_label).sum().item()
     
-    print(f" Accuracy on 1000 sample: {correct / total * 100}")
+    print(f" Accuracy: {correct / total * 100}")
 
 if __name__  == "__main__":
     run_demo_prediction()
