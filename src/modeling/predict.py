@@ -42,7 +42,7 @@ def predict_1_sample(model, img ,device):
     return confidence.item() * 100 , CLASSES[index.item()]
 
 def plot(img):
-    img = img.squeeze().cpu()
+    img = img.squeeze(0).cpu()
     img = img / 2 + 0.5
     npimg = img.numpy()
     npimg = np.transpose(npimg,(1,2,0))
