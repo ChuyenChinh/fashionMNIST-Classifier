@@ -15,6 +15,7 @@ def train_loop():
     
     for i in range(EPOCHS):
         acc_loss = 0.0
+        model.train()
         for train_X , train_y in train_loader:
             train_X , train_y = train_X.to(device) , train_y.to(device)
             pred = model(train_X)

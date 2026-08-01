@@ -20,6 +20,7 @@ dependencies = [
     "flake8",
     "isort",
     "jupyter>=1.1.1",
+    "matplotlib>=3.10.9",
     "notebook>=7.6.1",
     "pip",
     "python-dotenv",
